@@ -16,7 +16,6 @@ CREATE table User (
  subscription_end datetime,
  last_login datetime,
  created_at datetime
- 
 );
 CREATE table album(
  id int PRIMARY KEY AUTO_INCREMENT,

@@ -15,7 +15,33 @@ class User{
        $this->password=$password;
        $this->role=$role;
     }
-     
+
+   public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+     public function setUsername($username)
+    {
+        $this->username=$username;
+    }
+
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+
+    public function getType()
+    {
+        return $this->role;
+    }
 
 }
 
