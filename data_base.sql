@@ -1,3 +1,4 @@
+CREATE DATABASE fhotosphere;
 
 
 CREATE table User (
@@ -17,7 +18,7 @@ CREATE table User (
  last_login datetime,
  created_at datetime
  
-)
+);
 CREATE table album(
  id int PRIMARY KEY AUTO_INCREMENT,
  user_id int,
@@ -29,7 +30,8 @@ CREATE table album(
  photo_count int,
  created_at datetime,
  updated_at datetime
-)
+);
+
 CREATE table Post(
 id int PRIMARY KEY AUTO_INCREMENT,
 user_id int,
@@ -42,8 +44,7 @@ views_count int,
 published_at datetime,
 created_at datetime,
 updated_at datetime
-)
-
+);
 CREATE table comment (
 id int PRIMARY KEY AUTO_INCREMENT,
 user_id int,
@@ -53,20 +54,21 @@ FOREIGN KEY (post_id) REFERENCES Post(id),
 content text,
 created_at datetime,
 updated_at datetime
-)
+);
 
-CREATE table like(
+CREATE table likes(
 id int PRIMARY KEY AUTO_INCREMENT,
 user_id int,
 FOREIGN KEY (user_id) REFERENCES user(id),
 post_id int,
 FOREIGN KEY (post_id) REFERENCES Post(id),
 created_at datetime
-)
+);
+
 CREATE table Tag(
   id int PRIMARY KEY AUTO_INCREMENT,
   name varchar(100),
   slug varchar(100),
-  int usage_count
+  usage_count int
 
 )
