@@ -63,3 +63,10 @@ post_id int,
 FOREIGN KEY (post_id) REFERENCES Post(id),
 created_at datetime
 )
+CREATE table Tag(
+  id int PRIMARY KEY AUTO_INCREMENT,
+  name varchar(100),
+  slug varchar(100),
+  int usage_count
+
+)
