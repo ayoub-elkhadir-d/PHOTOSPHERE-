@@ -54,6 +54,27 @@ $this ->pdo =$obj->getConnection();
             'role' => $user->getRole()
         
         ]);
+    }
+    function update_user(User $user){
+        $stmt = $this->pdo->prepare("
+                UPDATE user SET 
+                name = :name,
+                username = :username,
+                email = :email,
+                password = :password,
+                role = :role
+                 WHERE id = :id
+            ");
+
+             $stmt->execute([
+            'name' => $user->getName(),
+            'username' => $user->getUsername(),
+            'email' => $user->getEmail(),
+            'password' => $user->getPassword(),
+            'role' => $user->getRole(),
+            'id' => $user->getId()
+        
+        ]);
 
     }
 
