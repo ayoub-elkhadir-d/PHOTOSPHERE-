@@ -25,23 +25,24 @@ class User{
     {
         return $this->username;
     }
-
-     public function setUsername($username)
-    {
-        $this->username=$username;
-    }
-
-
     public function getEmail()
     {
         return $this->email;
     }
-
-
-    public function getType()
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function getRole()
     {
         return $this->role;
     }
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+
 
 }
 

@@ -19,9 +19,7 @@ $this ->pdo =$obj->getConnection();
         if (!$data) {
             return null;
         }
-        
         return new User($data['id'], $data['name'], $data['username'],$data['email'],$data['password'],$data['role']);
-
     }
 
    public function fetchAll():?array
@@ -41,6 +39,21 @@ $this ->pdo =$obj->getConnection();
         }
         
         return $users;
+
+    }
+    public function Add_User(User $user){
+          $stmt = $this->pdo->prepare("
+                INSERT INTO user (name, username, email, password,role,created_at)
+                VALUES (:name, :username, :email,:password,:role, NOW())
+            ");
+           $stmt->execute([
+            'name' => $user->getName(),
+            'username' => $user->getUsername(),
+            'email' => $user->getEmail(),
+            'password' => $user->getPassword(),
+            'role' => $user->getRole()
+        
+        ]);
 
     }
 
