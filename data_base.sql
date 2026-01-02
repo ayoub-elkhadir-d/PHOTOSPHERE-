@@ -30,3 +30,16 @@ CREATE table album(
  created_at datetime,
  updated_at datetime
 )
+CREATE table Post(
+id int PRIMARY KEY AUTO_INCREMENT,
+user_id int,
+FOREIGN KEY (user_id) REFERENCES user(id),
+title varchar(100),
+description varchar(100),
+file_path varchar(100),
+status varchar(20),
+views_count int,
+published_at datetime,
+created_at datetime,
+updated_at datetime
+)
