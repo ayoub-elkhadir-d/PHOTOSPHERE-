@@ -7,12 +7,12 @@ class User_Repo{
 private PDO $pdo ;
 function __construct(){
 $obj = new ConectiontDb();
-$this ->$pdo =$obj->getConnection();
+$this ->pdo =$obj->getConnection();
 
 }
-   public function find($id):User
+   public function fetch($id):?User
     {
-        $stmt = $this->$pdo->prepare("SELECT * FROM user WHERE id = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE id = :id");
         $stmt->execute(['id' => $id]);
        $data = $stmt->fetch();
         
@@ -21,6 +21,26 @@ $this ->$pdo =$obj->getConnection();
         }
         
         return new User($data['id'], $data['name'], $data['username'],$data['email'],$data['password'],$data['role']);
+
+    }
+
+   public function fetchAll():?array
+    {
+       $users = [];
+        $stmt = $this->pdo->prepare("SELECT * FROM user");
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!$data) {
+            return null;
+        }
+        
+        foreach($data as $data){
+             $user =new User($data['id'], $data['name'], $data['username'],$data['email'],$data['password'],$data['role']);
+           
+            $users[] = $user;
+        }
+        
+        return $users;
 
     }
 
