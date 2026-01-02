@@ -43,3 +43,23 @@ published_at datetime,
 created_at datetime,
 updated_at datetime
 )
+
+CREATE table comment (
+id int PRIMARY KEY AUTO_INCREMENT,
+user_id int,
+FOREIGN KEY (user_id) REFERENCES user(id),
+post_id int,
+FOREIGN KEY (post_id) REFERENCES Post(id),
+content text,
+created_at datetime,
+updated_at datetime
+)
+
+CREATE table like(
+id int PRIMARY KEY AUTO_INCREMENT,
+user_id int,
+FOREIGN KEY (user_id) REFERENCES user(id),
+post_id int,
+FOREIGN KEY (post_id) REFERENCES Post(id),
+created_at datetime
+)
