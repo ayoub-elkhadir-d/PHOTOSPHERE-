@@ -54,7 +54,7 @@ created_at datetime,
 updated_at datetime
 );
 
-CREATE table like(
+CREATE table likes(
 id int PRIMARY KEY AUTO_INCREMENT,
 user_id int,
 FOREIGN KEY (user_id) REFERENCES user(id),

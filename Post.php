@@ -86,8 +86,16 @@ class Post {
 
 public function publish(Post_Repo $repo,$id) {
    $post = $repo -> fetch($id);
-    $post->setStatus("dublished");
+    $post->setStatus("published");
     $post->published_at = date('Y-m-d H:i:s');
     return $repo->update($post);
 }
+
+public function Archive(Post_Repo $repo,$id) {
+   $post = $repo -> fetch($id);
+    $post->setStatus("Archived");
+    $post->published_at = date('Y-m-d H:i:s');
+    return $repo->update($post);
+}
+
 }
