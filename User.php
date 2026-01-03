@@ -43,6 +43,10 @@ class User{
     }
 
 
+}
+
+class BasicUser extends User{
+
 
 }
 

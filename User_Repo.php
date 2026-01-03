@@ -77,7 +77,9 @@ $this ->pdo =$obj->getConnection();
         ]);
 
     }
-
+      function view_all_posts(){
+        
+      }
 
     }
 
