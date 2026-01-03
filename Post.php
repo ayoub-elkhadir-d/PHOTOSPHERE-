@@ -1,5 +1,6 @@
 <?php
-
+require_once 'Post_repo.php';
+ $obj = new Post_repo();
 class Post {
 
     protected int $id;
@@ -62,6 +63,9 @@ class Post {
     public function getStatus(): string {
         return $this->status;
     }
+    public function setStatus($status) {
+         $this->status = $status;
+    }
 
     public function getViewsCount(): int {
         return $this->views_count;
@@ -78,4 +82,12 @@ class Post {
     public function getUpdatedAt(): ?string {
         return $this->updated_at;
     }
+
+
+public function publish(Post_Repo $repo,$id) {
+   $post = $repo -> fetch($id);
+    $post->setStatus("dublished");
+    $post->published_at = date('Y-m-d H:i:s');
+    return $repo->update($post);
+}
 }
