@@ -15,13 +15,16 @@ class Post_Repo {
     public function fetch(int $id): ?Post {
         $stmt = $this->pdo->prepare("SELECT * FROM Post WHERE id = :id");
         $stmt->execute(['id' => $id]);
+
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$data) {
+            
             return null;
+
         }
 
-        return $this->mapToPost($data);
+         return new Post($data['id'],$data['user_id'],$data['title'],$data['description'],$data['file_path'],$data['status'],$data['views_count'],$data['published_at'],$data['created_at'],$data['updated_at']);
     }
 
     public function fetchAll(): array {
@@ -29,13 +32,14 @@ class Post_Repo {
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $posts = [];
+
         foreach ($rows as $data) {
-            $posts[] = $this->mapToPost($data);
+            $posts[] = new Post($data['id'],$data['user_id'],$data['title'],$data['description'],$data['file_path'],$data['status'],$data['views_count'],$data['published_at'],$data['created_at'],$data['updated_at']
+            );
         }
 
         return $posts;
     }
-
   
     public function insert(Post $post): bool {
         $sql = "INSERT INTO Post (user_id, title, description, file_path, status, views_count, published_at, created_at, updated_at) 

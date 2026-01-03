@@ -5,8 +5,10 @@ require_once 'Post_repo.php';
 // $obj = new User_Repo();
  $obj = new Post_repo();
 // print_r($obj->update_user(new User(11,'ayoub123','dfghjklmù*','kjhg@hgg.com,','kjhbgvc','Admin')));
- print_r($obj->fetch(4));
 
+ print_r($obj->insert(new Post(0,1,"Getting Started with PHP2","This is a description of the post.","images/post01.jpg","published",0 ,date('Y-m-d H:i:s'), date('Y-m-d H:i:s'),null)));
+
+ print_r($obj->fetchAll());
 
 
 
