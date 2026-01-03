@@ -8,7 +8,6 @@ private PDO $pdo ;
 function __construct(){
 $obj = new ConectiontDb();
 $this ->pdo =$obj->getConnection();
-
 }
    public function fetch($id):?User
     {
@@ -77,9 +76,7 @@ $this ->pdo =$obj->getConnection();
         ]);
 
     }
-      function view_all_posts(){
-        
-      }
+
 
     }
 
