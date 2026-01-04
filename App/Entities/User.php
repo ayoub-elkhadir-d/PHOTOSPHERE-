@@ -72,7 +72,7 @@ class BasicUser extends User{
 
     function addPublicAlbum(Album $alb){
      $albumrepo = new Album_repo();
-     $albumrepo->insert($alb);
+     $albumrepo->insert_public_album($alb);
 
     }
 
@@ -86,6 +86,11 @@ class BasicUser extends User{
 }
 class ProUser extends BasicUser{
 
-    
+  function addPrivateAlbum(Album $alb){
+     $albumrepo = new Album_repo();
+     $albumrepo->insert_private_album($alb);
+
+    } 
 }
+
 ?>

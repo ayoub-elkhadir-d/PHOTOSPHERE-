@@ -10,10 +10,9 @@ class Album {
     protected string $publishedAt;
     protected string $updateAt;
 
-    public function __construct(int $id,string $name,bool $public,string $cover,int $photoCount,string $publishedAt,string $updateAt) {
+    public function __construct(int $id,string $name,string $cover,int $photoCount,string $publishedAt,string $updateAt) {
         $this->id = $id;
         $this->name = $name;
-        $this->public = $public;
         $this->cover = $cover;
         $this->photoCount = $photoCount;
         $this->publishedAt = $publishedAt;
