@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__ . '/../Repositories/Comment_repo.php';
 require_once __DIR__ . '/../Repositories/Post_repo.php';
+require_once __DIR__ . '/../Repositories/Likes_repo.php';
  
 
 abstract class User{
@@ -89,6 +90,11 @@ class ProUser extends BasicUser{
   function addPrivateAlbum(Album $alb){
      $albumrepo = new Album_repo();
      $albumrepo->insert_private_album($alb);
+
+    } 
+  function addLike(Like $like){
+     $likerepo = new Likes_Repo();
+     $likerepo->add($like);
 
     } 
 }
