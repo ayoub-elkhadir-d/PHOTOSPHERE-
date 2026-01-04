@@ -1,7 +1,7 @@
 <?php
-require_once 'Post_repo.php';
 
- $obj = new Post_repo();
+require_once __DIR__ . '/../Repositories/Post_repo.php';
+
 class Post {
 
     protected int $id;

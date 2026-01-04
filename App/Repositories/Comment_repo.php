@@ -1,7 +1,7 @@
 <?php
-require_once 'db_con.php';
-require_once 'Comment.php';
-
+require_once __DIR__ . '/../../Config/DataBase/db_con.php';
+require_once __DIR__ . '/../Entities/Comment.php';
+require_once __DIR__ . '/../Interfaces/Interfase_Repo.php';
 class Comment_Repo implements RepositoryInterface{
     private PDO $pdo;
 

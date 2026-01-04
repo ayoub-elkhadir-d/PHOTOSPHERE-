@@ -1,7 +1,7 @@
 <?php
 
-require_once 'db_con.php';
-require_once 'Post.php';
+require_once __DIR__ . '/../../Config/DataBase/db_con.php';
+require_once __DIR__ . '/../Entities/Post.php';
 
 class Post_Repo implements RepositoryInterface{
 
@@ -59,7 +59,7 @@ class Post_Repo implements RepositoryInterface{
             'updated_at'   => $post->getUpdatedAt(),
         ]);
     }
-
+   public function delete(int $id){}
   
     public function update(Post $post): bool {
         $sql = "UPDATE Post SET 

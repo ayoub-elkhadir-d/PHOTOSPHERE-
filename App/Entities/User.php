@@ -1,6 +1,6 @@
 <?php 
-require_once 'Comment_repo.php';
-require_once 'Post_repo.php';
+require_once __DIR__ . '/../Repositories/Comment_repo.php';
+require_once __DIR__ . '/../Repositories/Post_repo.php';
  
 
 abstract class User{

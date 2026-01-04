@@ -1,7 +1,7 @@
 <?php 
 
-require_once 'db_con.php';
-require_once 'User.php';
+require_once __DIR__ . '/../../Config/DataBase/db_con.php';
+require_once __DIR__ . '/../Entities/User.php';
 
 class User_Repo implements RepositoryInterface{
 private PDO $pdo ;
@@ -76,6 +76,7 @@ $this ->pdo =$obj->getConnection();
         ]);
 
     }
+    public function delete(int $id){}
 
 
     }
