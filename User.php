@@ -1,4 +1,7 @@
 <?php 
+require_once 'Comment_repo.php';
+ 
+
 class User{
     protected $id;
     protected $name;
@@ -47,6 +50,13 @@ class User{
 
 class BasicUser extends User{
 
+    function addComment(Comment $cmt){
+
+      $comment_repo = new Comment_repo();
+
+      $comment_repo->insert($cmt);
+      
+    }
 
 }
 

@@ -1,5 +1,6 @@
 <?php
 require_once 'Post_repo.php';
+
  $obj = new Post_repo();
 class Post {
 
@@ -97,5 +98,4 @@ public function Archive(Post_Repo $repo,$id) {
     $post->published_at = date('Y-m-d H:i:s');
     return $repo->update($post);
 }
-
 }
