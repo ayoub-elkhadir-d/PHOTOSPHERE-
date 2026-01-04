@@ -3,7 +3,7 @@
 require_once 'db_con.php';
 require_once 'Post.php';
 
-class Post_Repo {
+class Post_Repo implements RepositoryInterface{
 
     private PDO $pdo;
 

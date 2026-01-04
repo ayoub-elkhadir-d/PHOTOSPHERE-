@@ -2,7 +2,7 @@
 require_once 'db_con.php';
 require_once 'Album.php';
 
-class Album_Repo {
+class Album_Repo implements RepositoryInterface{
     private PDO $pdo;
 
     public function __construct() {

@@ -3,7 +3,7 @@ require_once 'Comment_repo.php';
 require_once 'Post_repo.php';
  
 
-class User{
+abstract class User{
     protected $id;
     protected $name;
     protected $username;
@@ -37,10 +37,9 @@ class User{
     {
         return $this->name;
     }
-    public function getRole()
-    {
-        return $this->role;
-    }
+
+  public abstract  function getRole();
+
     public function getPassword()
     {
         return $this->password;
@@ -50,6 +49,10 @@ class User{
 }
 
 class BasicUser extends User{
+
+       public function getRole(){
+         return "basic";
+       }
 
     function addComment(Comment $cmt){
 
@@ -81,5 +84,8 @@ class BasicUser extends User{
     }
 
 }
+class ProUser extends BasicUser{
 
+    
+}
 ?>

@@ -2,7 +2,7 @@
 require_once 'db_con.php';
 require_once 'Comment.php';
 
-class Comment_Repo {
+class Comment_Repo implements RepositoryInterface{
     private PDO $pdo;
 
     public function __construct() {

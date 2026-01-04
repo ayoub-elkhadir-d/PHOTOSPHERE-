@@ -3,7 +3,7 @@
 require_once 'db_con.php';
 require_once 'User.php';
 
-class User_Repo{
+class User_Repo implements RepositoryInterface{
 private PDO $pdo ;
 function __construct(){
 $obj = new ConectiontDb();
