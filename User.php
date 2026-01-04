@@ -1,5 +1,6 @@
 <?php 
 require_once 'Comment_repo.php';
+require_once 'Post_repo.php';
  
 
 class User{
@@ -55,8 +56,23 @@ class BasicUser extends User{
       $comment_repo = new Comment_repo();
 
       $comment_repo->insert($cmt);
-      
+
     }
+    
+    function addPost(Post $pst){
+
+      $post_repo = new Post_repo();
+
+      $post_repo->insert($pst);
+
+    }
+
+public function publish(Post_Repo $repo,$id) {
+   $post = $repo -> fetch($id);
+    $post->setStatus("published");
+    $post->published_at = date('Y-m-d H:i:s');
+    return $repo->update($post);
+}
 
 }
 
