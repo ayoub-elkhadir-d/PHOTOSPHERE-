@@ -18,11 +18,11 @@ class Album_Repo {
         if (!$data) return null;
 
         return new Album(
-            (int)$data['id'],
+            $data['id'],
             $data['name'],
-            (bool)$data['public'],
+            $data['public'],
             $data['cover'],
-            (int)$data['photoCount'],
+            $data['photoCount'],
             $data['publishedAt'],
             $data['updateAt']
         );
@@ -36,7 +36,7 @@ class Album_Repo {
         
         return $stmt->execute([
             'name'      => $album->getName(),
-            'public'    => (int)$album->isPublic(),
+            'public'    => $album->isPublic(),
             'cover'     => $album->getCover(),
             'count'     => $album->getPhotoCount(),
             'published' => $album->getPublishedAt(),
@@ -58,7 +58,7 @@ class Album_Repo {
         return $stmt->execute([
             'id'     => $album->getId(),
             'name'   => $album->getName(),
-            'public' => (int)$album->isPublic(),
+            'public' => $album->isPublic(),
             'cover'  => $album->getCover(),
             'count'  => $album->getPhotoCount(),
             'updated'=> date('Y-m-d H:i:s')

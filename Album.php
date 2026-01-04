@@ -1,6 +1,6 @@
 <?php  
 
-
+require_once 'Album_repo.php';
 class Album {
     protected int $id;
     protected string $name;
@@ -84,7 +84,7 @@ class Album {
     }
 
     public function AddPhoto(Photo $photo): bool {
-    
+        
         return true;
     }
 

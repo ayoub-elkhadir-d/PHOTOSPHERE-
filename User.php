@@ -58,7 +58,7 @@ class BasicUser extends User{
       $comment_repo->insert($cmt);
 
     }
-    
+
     function addPost(Post $pst){
 
       $post_repo = new Post_repo();
@@ -67,12 +67,18 @@ class BasicUser extends User{
 
     }
 
-public function publish(Post_Repo $repo,$id) {
-   $post = $repo -> fetch($id);
-    $post->setStatus("published");
-    $post->published_at = date('Y-m-d H:i:s');
-    return $repo->update($post);
-}
+    function addPublicAlbum(Album $alb){
+     $albumrepo = new Album_repo();
+     $albumrepo->insert($alb);
+
+    }
+
+    public function publish(Post_Repo $repo,$id) {
+    $post = $repo -> fetch($id);
+        $post->setStatus("published");
+        $post->published_at = date('Y-m-d H:i:s');
+        return $repo->update($post);
+    }
 
 }
 
