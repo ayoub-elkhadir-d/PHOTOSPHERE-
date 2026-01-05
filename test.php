@@ -25,6 +25,7 @@ $newComment = new Comment(
  date('Y-m-d H:i:s'),
  null                
 );
+
 $like = new Like(
     0,                       
     1,                        
@@ -42,7 +43,7 @@ $album = new Album(
 );
 
 
- print_r($obj7->addLike($like));
+//  print_r($obj7->fetchAll());
 
 //  print_r($pst_repo->fetchAll());
 

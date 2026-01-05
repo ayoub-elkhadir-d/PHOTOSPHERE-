@@ -18,7 +18,7 @@ $this ->pdo =$obj->getConnection();
         if (!$data) {
             return null;
         }
-        return new User($data['id'], $data['name'], $data['username'],$data['email'],$data['password'],$data['role']);
+        return new BasicUser($data['id'], $data['name'], $data['username'],$data['email'],$data['password'],$data['role']);
     }
 
    public function fetchAll():?array
@@ -32,7 +32,7 @@ $this ->pdo =$obj->getConnection();
         }
         
         foreach($data as $data){
-             $user =new User($data['id'], $data['name'], $data['username'],$data['email'],$data['password'],$data['role']);
+             $user =new BasicUser($data['id'], $data['name'], $data['username'],$data['email'],$data['password'],$data['role']);
            
             $users[] = $user;
         }

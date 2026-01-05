@@ -2,9 +2,10 @@
 require_once __DIR__ . '/../Repositories/Comment_repo.php';
 require_once __DIR__ . '/../Repositories/Post_repo.php';
 require_once __DIR__ . '/../Repositories/Likes_repo.php';
+require_once __DIR__ . '/../Repositories/User_Repo.php';
  
 
-abstract class User{
+abstract class User {
     protected $id;
     protected $name;
     protected $username;
@@ -84,19 +85,25 @@ class BasicUser extends User{
         return $repo->update($post);
     }
 
+  function addLike(Like $like){
+     $likerepo = new Likes_Repo();
+     $likerepo->add($like);
+
+    } 
+    
 }
 class ProUser extends BasicUser{
+
+    public function getRole(){
+         return "Pro";
+       }
 
   function addPrivateAlbum(Album $alb){
      $albumrepo = new Album_repo();
      $albumrepo->insert_private_album($alb);
 
     } 
-  function addLike(Like $like){
-     $likerepo = new Likes_Repo();
-     $likerepo->add($like);
 
-    } 
 }
 
 ?>
