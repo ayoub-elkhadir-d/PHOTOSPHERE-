@@ -46,64 +46,10 @@ abstract class User {
     {
         return $this->password;
     }
-
-
-}
-
-class BasicUser extends User{
-
-       public function getRole(){
-         return "basic";
-       }
-
-    function addComment(Comment $cmt){
-
-      $comment_repo = new Comment_repo();
-
-      $comment_repo->insert($cmt);
-
-    }
-
-    function addPost(Post $pst){
-
-      $post_repo = new Post_repo();
-
-      $post_repo->insert($pst);
-
-    }
-
-    function addPublicAlbum(Album $alb){
-     $albumrepo = new Album_repo();
-     $albumrepo->insert_public_album($alb);
-
-    }
-
-    public function publish(Post_Repo $repo,$id) {
-    $post = $repo -> fetch($id);
-        $post->setStatus("published");
-        $post->published_at = date('Y-m-d H:i:s');
-        return $repo->update($post);
-    }
-
-  function addLike(Like $like){
-     $likerepo = new Likes_Repo();
-     $likerepo->add($like);
-
-    } 
-    
-}
-class ProUser extends BasicUser{
-
-    public function getRole(){
-         return "Pro";
-       }
-
-  function addPrivateAlbum(Album $alb){
-     $albumrepo = new Album_repo();
-     $albumrepo->insert_private_album($alb);
-
-    } 
+public abstract function login($username,$password);
 
 }
+
+
 
 ?>

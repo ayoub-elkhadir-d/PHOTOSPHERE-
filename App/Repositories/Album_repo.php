@@ -21,9 +21,9 @@ public function fetch(int $id): ?Album
     return new Album(
         $data['id'],
         $data['title'],
-        (bool) $data['visibility'],
+        $data['visibility'],
         $data['photo_cover_url'],
-        (int) $data['photo_count'],
+        $data['photo_count'],
         $data['created_at'],
         $data['updated_at']
     );
@@ -116,4 +116,5 @@ public function update(Album $album): bool
         $stmt = $this->pdo->prepare("DELETE FROM album WHERE id = :id");
         return $stmt->execute(['id' => $id]);
     }
+
 }

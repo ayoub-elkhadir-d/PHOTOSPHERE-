@@ -13,6 +13,7 @@ require_once __DIR__ . '/App/Repositories/Likes_repo.php';
  $obj = new Comment_repo();
  $pst_repo = new Post_repo();
  $pst_repo = new Album_Repo();
+ $user_repo = new User_Repo();
 
  $obj2 = new Post(0,1,"Getting Started with10000
 8000","This is a description of the post.","images/post01.jpg","published",0 ,date('Y-m-d H:i:s'), date('Y-m-d H:i:s'),null);
@@ -43,7 +44,7 @@ $album = new Album(
 );
 
 
-//  print_r($obj7->fetchAll());
+ print_r($user_repo->fetch(7));
 
 //  print_r($pst_repo->fetchAll());
 

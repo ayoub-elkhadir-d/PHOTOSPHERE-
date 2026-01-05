@@ -14,11 +14,13 @@ $this ->pdo =$obj->getConnection();
         $stmt = $this->pdo->prepare("SELECT * FROM user WHERE id = :id");
         $stmt->execute(['id' => $id]);
        $data = $stmt->fetch();
-        
+ 
         if (!$data) {
             return null;
         }
+
         return new BasicUser($data['id'], $data['name'], $data['username'],$data['email'],$data['password'],$data['role']);
+
     }
 
    public function fetchAll():?array
@@ -32,8 +34,8 @@ $this ->pdo =$obj->getConnection();
         }
         
         foreach($data as $data){
+
              $user =new BasicUser($data['id'], $data['name'], $data['username'],$data['email'],$data['password'],$data['role']);
-           
             $users[] = $user;
         }
         
@@ -72,12 +74,19 @@ $this ->pdo =$obj->getConnection();
             'password' => $user->getPassword(),
             'role' => $user->getRole(),
             'id' => $user->getId()
-        
         ]);
 
     }
     public function delete(int $id){}
 
+      public function login($username,$pass){
+        $stmt = $this->pdo->prepare("Select * from user  WHERE username = :username and password = :password");
+         $stmt->execute([
+            'username' => $username,
+            'password' => $password]);
+            
+          $data = $stmt->fetch();
+      }
 
     }
 
