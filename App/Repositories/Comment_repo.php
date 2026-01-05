@@ -65,9 +65,9 @@ class Comment_Repo implements RepositoryInterface{
                 content = :content, 
                 updated_at = :updated 
                 WHERE id = :id";
-        
+
         $stmt = $this->pdo->prepare($sql);
-        
+
         return $stmt->execute([
             'id'      => $comment->getId(),
             'content' => $comment->getContent(),
@@ -76,7 +76,7 @@ class Comment_Repo implements RepositoryInterface{
     }
 
     public function delete(int $id): bool {
-        $stmt = $this->pdo->prepare("DELETE FROM comment WHERE id = :id");
-        return $stmt->execute(['id' => $id]);
+        // $stmt = $this->pdo->prepare("DELETE FROM comment WHERE id = :id");
+        // return $stmt->execute(['id' => $id]);
     }
 }

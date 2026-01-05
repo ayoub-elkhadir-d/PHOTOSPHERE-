@@ -75,8 +75,8 @@ $this ->pdo =$obj->getConnection();
             'role' => $user->getRole(),
             'id' => $user->getId()
         ]);
-
     }
+
     public function delete(int $id){}
 
       public function login($username,$pass){

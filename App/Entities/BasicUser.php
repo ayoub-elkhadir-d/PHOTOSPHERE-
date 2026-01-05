@@ -6,7 +6,7 @@ class BasicUser extends User{
        public function getRole(){
          return "basic";
        }
-      public  function   login($username,$password){
+      public function login($username,$password){
 
 
       }
@@ -43,7 +43,7 @@ class BasicUser extends User{
   function addLike(Like $like){
      $likerepo = new Likes_Repo();
      $likerepo->add($like);
-
-    } 
+    }
+ 
 
 }

@@ -49,8 +49,6 @@ class Comment {
          return $this->updated_at; 
         }
         
-
- 
     public function setContent(string $content): void {
          $this->content = $content; 
         }
