@@ -4,12 +4,9 @@ require_once  'User.php';
 class BasicUser extends User{
 
        public function getRole(){
-         return "basic";
+         return "BasicUser";
        }
-      public function login($username,$password){
-
-
-      }
+      public function login($username,$password){}
     function addComment(Comment $cmt){
 
       $comment_repo = new Comment_repo();

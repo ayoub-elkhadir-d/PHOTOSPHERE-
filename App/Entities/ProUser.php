@@ -3,7 +3,7 @@ require_once 'BasicUser.php';
 class ProUser extends BasicUser{
 
     public function getRole(){
-         return "Pro";
+         return "ProUser";
        }
 
   function addPrivateAlbum(Album $alb){

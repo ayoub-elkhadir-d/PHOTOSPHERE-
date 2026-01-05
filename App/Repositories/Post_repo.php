@@ -63,15 +63,15 @@ class Post_Repo implements RepositoryInterface{
   
     public function update(Post $post): bool {
         $sql = "UPDATE Post SET 
-                user_id = :user_id, 
-                title = :title, 
-                description = :description, 
-                file_path = :file_path, 
-                status = :status, 
-                views_count = :views_count, 
-                published_at = :published_at, 
-                updated_at = :updated_at 
-                WHERE id = :id";
+            user_id = :user_id, 
+            title = :title, 
+            description = :description, 
+            file_path = :file_path, 
+            status = :status, 
+            views_count = :views_count, 
+            published_at = :published_at, 
+            updated_at = :updated_at 
+            WHERE id = :id";
         
         $stmt = $this->pdo->prepare($sql);
         

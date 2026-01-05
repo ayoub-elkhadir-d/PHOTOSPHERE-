@@ -4,6 +4,8 @@
 require_once __DIR__ . '/App/Repositories/User_Repo.php';
 require_once __DIR__ . '/App/Repositories/Post_repo.php';
 require_once __DIR__ . '/App/Entities/Album.php';
+require_once __DIR__ . '/App/Entities/ProUser.php';
+require_once __DIR__ . '/App/Entities/Album.php';
 require_once __DIR__ . '/App/Repositories/Comment_repo.php';
 require_once __DIR__ . '/App/Repositories/Album_repo.php';
 require_once __DIR__ . '/App/Repositories/Likes_repo.php';
@@ -27,10 +29,10 @@ $newComment = new Comment(
 );
 
 $like = new Like(
-    0,                       
-    1,                        
-    10,                         
-    date('Y-m-d H:i:s')        
+0,   
+1,
+10, 
+date('Y-m-d H:i:s')
 );
 
 $album = new Album(
@@ -43,9 +45,9 @@ $album = new Album(
 );
 
 
- print_r($user_repo->fetch(7));
+ print_r($user_repo->Add_User($obj7));
 
-//  print_r($pst_repo->fetchAll());
+
 
 
 

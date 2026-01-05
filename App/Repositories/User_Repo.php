@@ -57,15 +57,7 @@ $this ->pdo =$obj->getConnection();
         ]);
     }
     function update_user(User $user){
-        $stmt = $this->pdo->prepare("
-                UPDATE user SET 
-                name = :name,
-                username = :username,
-                email = :email,
-                password = :password,
-                role = :role
-                 WHERE id = :id
-            ");
+        $stmt = $this->pdo->prepare("UPDATE user SET name = :name,username = :username,email = :email,password = :password,role = :roleWHERE id = :id");
 
              $stmt->execute([
             'name' => $user->getName(),

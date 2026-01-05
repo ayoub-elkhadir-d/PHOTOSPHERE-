@@ -61,10 +61,7 @@ class Comment_Repo implements RepositoryInterface{
     }
 
     public function update(Comment $comment): bool {
-        $sql = "UPDATE comment SET 
-                content = :content, 
-                updated_at = :updated 
-                WHERE id = :id";
+        $sql = "UPDATE comment SET content = :content, updated_at = :updated WHERE id = :id";
 
         $stmt = $this->pdo->prepare($sql);
 
@@ -76,7 +73,7 @@ class Comment_Repo implements RepositoryInterface{
     }
 
     public function delete(int $id): bool {
-        // $stmt = $this->pdo->prepare("DELETE FROM comment WHERE id = :id");
-        // return $stmt->execute(['id' => $id]);
+        $stmt = $this->pdo->prepare("DELETE FROM comment WHERE id = :id");
+        return $stmt->execute(['id' => $id]);
     }
 }
