@@ -3,16 +3,19 @@ require_once  'User.php';
 
 class BasicUser extends User{
 
+       protected $count_limit;
+
        public function getRole(){
          return "BasicUser";
        }
+       
       public function login($username,$password){}
+
     function addComment(Comment $cmt){
 
       $comment_repo = new Comment_repo();
 
       $comment_repo->insert($cmt);
-
     }
 
     function addPost(Post $pst){
@@ -20,7 +23,6 @@ class BasicUser extends User{
       $post_repo = new Post_repo();
 
       $post_repo->insert($pst);
-
     }
 
     function addPublicAlbum(Album $alb){

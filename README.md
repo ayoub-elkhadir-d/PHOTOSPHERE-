@@ -1,27 +1,70 @@
-📸 PHOTOSPHERE - Galerie Photo Communautaire
+<?php
 
-PhotoSphere est une application web pour partager des photos, créer des albums et interagir avec la communauté. Conçue pour photographes amateurs et professionnels, elle allie simplicité et fonctionnalités avancées.
+// declaration :
 
-🚀 Fonctionnalités principales
 
-Gestion des utilisateurs : BasicUser, ProUser, Moderator, Administrator
+interface Name {
+   public function function1();
+}
 
-Upload et gestion des photos : métadonnées, cycle de vie, tags
 
-Albums : public ou privé, compteur automatique, photo de couverture
+// implement multiple  :
 
-Interactions sociales : commentaires, likes
+interface InterfaceA {
+   public function methodA();
+}
+interface InterfaceB {
+   public function methodB();
+}
+class MyClass implements InterfaceA, InterfaceB {
+   public function methodA() {
+       echo "Method from InterfaceA\n";
+   }
+   public function methodB() {
+       echo "Method from InterfaceB\n";
+   }
+}
+    
+// Interface vs Classe abstraite :
 
-Sécurité : mots de passe hashés, validation côté serveur
+Héritage:
 
-Performance : indexation SQL, gestion optimisée des fichiers
+Une classe peut hériter d'une seule classe abstraite (héritage simple). 
 
-Audit & journalisation : suivi complet des actions et modérations
+Une classe peut implémenter plusieurs interfaces (héritage multiple). 
 
-🗂 Architecture
+Modificateurs d'accès:
 
-Backend : PHP (POO) + PDO
+abstract class : accept multiple acces modifires
 
-Base de données : MySQL
+interface : accept public et protected
 
-Entités principales : User, Album, Photo, Comment, Like, Tag
+
+
+
+traits :
+
+   declaration :
+
+   <?php
+trait TraitName {
+  // some code...
+}
+?>
+
+use in class :
+
+    <?php
+    class MyClass {
+    use TraitName;
+    }
+    ?>
+
+
+    usage :
+    pour ehiritage multiple
+
+
+
+
+?>

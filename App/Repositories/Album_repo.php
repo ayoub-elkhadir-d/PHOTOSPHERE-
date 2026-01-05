@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../Config/DataBase/db_con.php';
 require_once __DIR__ . '/../Entities/Album.php';
+require_once __DIR__ . '/../Interfaces/Interfase_Repo.php';
 
 class Album_Repo implements RepositoryInterface{
     private PDO $pdo;
