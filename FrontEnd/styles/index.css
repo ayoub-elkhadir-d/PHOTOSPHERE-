@@ -1,0 +1,267 @@
+/* 1. استيراد الخط */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+/* 2. الألوان والمتغيرات */
+:root {
+    --primary-bg: #121212;
+    --card-bg: #1c1c1c;
+    --accent-color: #d4af37; /* اللون الذهبي */
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+}
+
+/* 3. الإعدادات العامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* 4. شريط التنقل (Navbar) */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(18, 18, 18, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-main);
+    text-transform: uppercase;
+    border: 2px solid var(--text-main);
+    padding: 5px 15px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--accent-color);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-login {
+    background: transparent;
+    color: var(--text-main);
+    border: none;
+}
+
+.btn-login:hover {
+    color: var(--accent-color);
+}
+
+.btn-create {
+    background: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 0;
+}
+
+.btn-create:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+/* 5. التخطيط والشبكة (Grid) */
+.container {
+    max-width: 1400px;
+    margin: 4rem auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.section-subtitle {
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* 6. تصميم كارت الألبوم */
+.album-card {
+    position: relative;
+    height: 500px;
+    background: var(--card-bg);
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px; /* حواف حادة جداً */
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+}
+
+/* تأخير ظهور الكروت */
+.album-card:nth-child(1) { animation-delay: 0.1s; }
+.album-card:nth-child(2) { animation-delay: 0.2s; }
+.album-card:nth-child(3) { animation-delay: 0.3s; }
+.album-card:nth-child(4) { animation-delay: 0.4s; }
+.album-card:nth-child(5) { animation-delay: 0.5s; }
+.album-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* 7. الصورة (بدون فلتر رمادي) */
+.album-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* تأكدنا من عدم وجود filter: grayscale هنا */
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* تأثير التكبير عند التمرير */
+.album-card:hover .album-image {
+    transform: scale(1.1);
+}
+
+/* 8. الطبقة الشفافة والنصوص */
+.album-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%; /* تغطي الجزء السفلي */
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 15%, rgba(0,0,0,0.5) 70%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2.5rem 2rem;
+    z-index: 2;
+}
+
+.category-tag {
+    font-size: 0.7rem;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.album-title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* عند التمرير يرتفع العنوان قليلاً ويتغير لونه */
+.album-card:hover .album-title {
+    color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.view-details {
+    font-size: 0.75rem;
+    color: #ccc;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+}
+
+/* الخط أسفل كلمة View Collection */
+.view-details::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: var(--accent-color);
+    margin-top: 8px;
+    transition: width 0.4s ease;
+}
+
+.album-card:hover .view-details::after {
+    width: 100%;
+}
+
+/* 9. الإطار الخارجي عند التمرير */
+.album-card::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 3;
+    pointer-events: none;
+    transition: border-color 0.4s ease;
+}
+
+.album-card:hover::after {
+    border-color: var(--accent-color);
+}
+
+/* 10. أنيميشن الظهور */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* التجاوب مع الجوال */
+@media (max-width: 768px) {
+    nav { flex-direction: column; padding: 1rem; }
+    .nav-links { margin: 1rem 0; gap: 1.5rem; }
+}

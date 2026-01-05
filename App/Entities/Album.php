@@ -4,15 +4,17 @@ require_once __DIR__ . '/../Repositories/Album_repo.php';
 class Album {
     protected int $id;
     protected string $name;
+    protected string $desc;
     protected bool $public;
     protected string $cover;
     protected int $photoCount;
     protected string $publishedAt;
     protected string $updateAt;
 
-    public function __construct(int $id,string $name,string $cover,int $photoCount,string $publishedAt,string $updateAt) {
+    public function __construct(int $id,string $name,string $desc,string $cover,int $photoCount,string $publishedAt,string $updateAt) {
         $this->id = $id;
         $this->name = $name;
+        $this->desc = $desc;
         $this->cover = $cover;
         $this->photoCount = $photoCount;
         $this->publishedAt = $publishedAt;
@@ -28,6 +30,11 @@ class Album {
     public function getName(): string {
         
         return $this->name; 
+    
+    }
+    public function getDescription(): string {
+        
+        return $this->desc; 
     
     }
     public function isPublic(): bool {

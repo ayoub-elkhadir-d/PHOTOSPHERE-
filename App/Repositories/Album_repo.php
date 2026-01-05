@@ -19,7 +19,7 @@ public function fetch(int $id): ?Album
 
     if (!$data) return null;
 
-    return new Album($data['id'],$data['title'],$data['visibility'],$data['photo_cover_url'],$data['photo_count'],$data['created_at'],$data['updated_at']
+    return new Album($data['id'],$data['title'],$data['description'],$data['visibility'],$data['photo_cover_url'],$data['photo_count'],$data['created_at'],$data['updated_at']
     );
 }
 
@@ -34,6 +34,7 @@ public function fetchAll(): array
         $albums[] = new Album(
             $data['id'],
             $data['title'],
+            $data['description'],
             $data['photo_cover_url'],
             $data['photo_count'],
             $data['created_at'],
