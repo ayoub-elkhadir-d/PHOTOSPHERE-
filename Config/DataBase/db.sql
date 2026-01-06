@@ -67,7 +67,7 @@ CREATE table Tag(
   id int PRIMARY KEY AUTO_INCREMENT,
   name varchar(100),
   slug varchar(100),
-   usage_count int
+  usage_count int
 
 );
 INSERT INTO User (name, username, email, password, role, bio, profilpic, isactive, monthly_uploads, subscription_start, subscription_end, last_login, created_at) VALUES
