@@ -19,9 +19,7 @@ class Comment_Repo implements Commentable{
         $stmt = $this->pdo->prepare("SELECT * FROM comment WHERE id = :id");
         $stmt->execute(['id' => $id]);
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
-
         if (!$data) return null;
-
         return new Comment(
             $data['id'],
             $data['user_id'],
@@ -36,9 +34,7 @@ class Comment_Repo implements Commentable{
 
     public function updateComment(Comment $comment): bool {
         $sql = "UPDATE comment SET content = :content, updated_at = :updated WHERE id = :id";
-
         $stmt = $this->pdo->prepare($sql);
-
         return $stmt->execute([
             'id'      => $comment->getId(),
             'content' => $comment->getContent(),
@@ -46,7 +42,9 @@ class Comment_Repo implements Commentable{
         ]);
     }
 
- 
+
+
+
 
 
 public function  addComment(Comment $comment): bool{
@@ -91,7 +89,6 @@ public function  getComments(): array{
 
 
 public function  getCommentCount(): int{
-
 
 }
 }

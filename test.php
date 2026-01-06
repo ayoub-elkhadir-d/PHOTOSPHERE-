@@ -50,7 +50,10 @@ $comment_repo -> addComment($newComment);
 // $like_repo->addLike($like);
 
 
-
+// class Article implements Taggable
+// {
+//     use TaggableTrait;
+// }
 
 
 
