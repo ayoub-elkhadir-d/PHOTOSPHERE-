@@ -19,7 +19,7 @@ $all_albums = $obj_album->fetchAll();
 <body>
 
     <nav>
-        <div class="logo">FOCUS.</div>
+        <div class="logo">PHOTOSPHERE</div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Portfolio</a></li>

@@ -56,13 +56,14 @@ use in class :
 
     <?php
     class MyClass {
+
     use TraitName;
+    
     }
     ?>
 
 
-    usage :
-    pour ehiritage multiple
+  
 
 
 

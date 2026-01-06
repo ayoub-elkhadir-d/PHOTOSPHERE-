@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../../Config/DataBase/db_con.php';
 require_once __DIR__ . '/../Entities/Post.php';
-
+require_once __DIR__ . '/../Interfaces/Interfase_Repo.php';
 class Post_Repo implements RepositoryInterface{
 
     private PDO $pdo;
