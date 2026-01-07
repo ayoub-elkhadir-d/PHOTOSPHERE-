@@ -36,18 +36,22 @@ $like = new Like(
 date('Y-m-d H:i:s')
 );
 
-// $album = new Album(
-//     1,
-//     "pub",        
-//     "covers/summer.jpg",       
-//     25,                       
-//     date('Y-m-d H:i:s'),       
-//     date('Y-m-d H:i:s')         
-// );
+$album = new Album(
+    1,
+    2,
+    "pubzsssss",    
+    "kjhgfvghhhh",    
+    "covers/summer.jpg", 
+    1,
+    25,                       
+    date('Y-m-d H:i:s'),       
+    date('Y-m-d H:i:s')         
+);
 
 //  $alb_repo ->  addPhotoToAlbum(4,19);
- $t = $alb_repo ->  getAlbumWithPhotos(20);
-print_r($t);
+$alb_repo ->  Crea_album($album,8,0);
+
+
 // $comment_repo -> addComment($newComment);
 // $like_repo->addLike($like);
 

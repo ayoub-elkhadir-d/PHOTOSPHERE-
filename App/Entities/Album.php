@@ -11,14 +11,19 @@ class Album {
     protected string $publishedAt;
     protected string $updateAt;
     protected string $created_at;
-
-    public function __construct(int $id,string $name,string $desc,string $cover,int $photoCount,string $publishedAt,string $updateAt,string $created_at) {
+    protected int $user_id;
+    protected string $ispublic;
+    
+    public function __construct(int $id,int $user_id,string $name,string $desc,string $cover,int $photoCount,int $ispublic,string $updateAt,string $created_at) {
         $this->id = $id;
+        $this->user_id = $user_id;
         $this->name = $name;
         $this->desc = $desc;
         $this->cover = $cover;
+        $this->ispublic = $ispublic;
+
         $this->photoCount = $photoCount;
-        $this->publishedAt = $publishedAt;
+        
         $this->updateAt = $updateAt;
         $this->created_at = $created_at;
     }
@@ -27,6 +32,12 @@ class Album {
     public function getId(): int {
         
         return $this->id; 
+    
+    }
+
+    public function get_user_id(): int {
+        
+        return $this->user_id; 
     
     }
     public function getName(): string {
@@ -56,7 +67,7 @@ class Album {
     }
     public function getPublishedAt(): string {
         
-        return $this->publishedAt; 
+        return $this->created_at; 
     
     }
     public function getUpdateAt(): string {

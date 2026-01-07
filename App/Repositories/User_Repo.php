@@ -45,7 +45,7 @@ $this ->pdo =$obj->getConnection();
     public function Add_User(User $user){
           $stmt = $this->pdo->prepare("
                 INSERT INTO user (name, username, email, password,role,created_at)
-                VALUES (:name, :username, :email,:password,:role, NOW())
+                VALUES (:name, :username, :email , :password ,:role, NOW())
             ");
            $stmt->execute([
             'name' => $user->getName(),

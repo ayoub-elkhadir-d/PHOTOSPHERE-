@@ -13,9 +13,12 @@ class Album_Repo implements RepositoryInterface{
 
 public function getAlbumWithPhotos(int $id) 
 {
-    $stmt = $this->pdo->prepare("SELECT album_id ,post.*
-FROM albumPost 
-INNER JOIN post ON albumPost.post_id = post.id where albumPost.album_id = :id");
+    $stmt = $this->pdo->prepare("SELECT
+    album_id, post.* FROM albumPost
+INNER JOIN post ON albumPost.post_id = post.id
+INNER JOIN album ON albumPost.album_id = album.id
+ WHERE albumPost.album_id = :id AND album.visibility = 1
+    ");
     $stmt->execute(['id' => $id]);
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -24,6 +27,7 @@ INNER JOIN post ON albumPost.post_id = post.id where albumPost.album_id = :id");
     return  $data;
     
 }
+
 
 public function fetchAll(): array
 {
@@ -49,41 +53,33 @@ public function fetchAll(): array
 
 
 
-public function Creat_public_album(Album $album): bool
-{
-    $sql = "INSERT INTO album 
-        (title, visibility, photo_cover_url, photo_count, created_at, updated_at) 
-        VALUES (:title, :visibility, :cover, :count, :created, :updated)";
-
+public function Crea_album(Album $album, $user_id, $isPrivate) {
+    $visibility = 0;
+    $sql = "INSERT INTO album (user_id, title, description, visibility, photo_cover_url, photo_count, created_at, updated_at) VALUES (:user_id, :title, :description, :visibility, :cover, :count, :created, :updated)";
+    $get_role = "SELECT role from User WHERE id = :user_id";
+    $stmt = $this->pdo->prepare($get_role);
+    $stmt->execute(['user_id' => $user_id]);
+    $role = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($role['role'] == 'Pro') {
+        $visibility = $isPrivate;
+    } elseif ($role['role'] == 'Basic') {
+        $visibility = 1;
+    } else {
+        return;
+    }
     $stmt = $this->pdo->prepare($sql);
-
-    return $stmt->execute([
-        'title'      => $album->getName(),
-        'visibility' => 1,
-        'cover'      => $album->getCover(),
-        'count'      => $album->getPhotoCount(),
-        'created'    => $album->getPublishedAt(),
-        'updated'    => $album->getUpdateAt()
+    $stmt->execute([
+        'user_id' => $album->get_user_id(),
+        'title' => $album->getName(),
+        'description' => $album->getDescription(),
+        'visibility' => $visibility,
+        'cover' => $album->getCover(),
+        'count' => $album->getPhotoCount(),
+        'created' => $album->getPublishedAt(),
+        'updated' => $album->getUpdateAt()
     ]);
 }
 
-public function Creat_private_album(Album $album): bool
-{
-    $sql = "INSERT INTO album 
-        (title, visibility, photo_cover_url, photo_count, created_at, updated_at) 
-        VALUES (:title, :visibility, :cover, :count, :created, :updated)";
-
-    $stmt = $this->pdo->prepare($sql);
-
-    return $stmt->execute([
-        'title'      => $album->getName(),
-        'visibility' => 0,
-        'cover'      => $album->getCover(),
-        'count'      => $album->getPhotoCount(),
-        'created'    => $album->getPublishedAt(),
-        'updated'    => $album->getUpdateAt()
-    ]);
-}
 
 
 public function update(Album $album): bool
