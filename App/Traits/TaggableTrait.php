@@ -29,11 +29,10 @@ trait TaggableTrait
         foreach ($this->tags as $index => $value) {
             if ($value === $tag) {
                 unset($this->tags[$index]);
+
             }
         }
 
-    
-    
     }
 
     public function getTags(): array

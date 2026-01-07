@@ -43,6 +43,14 @@ published_at datetime,
 created_at datetime,
 updated_at datetime
 );
+CREATE table albumPost(
+post_id int,
+FOREIGN KEY (post_id) REFERENCES Post(id),
+album_id int,
+FOREIGN KEY (album_id) REFERENCES album(id)
+);
+INSERT INTO albumPost (post_id, album_id)VALUES (1,17),(5,19),(3,18),(2,19),(1,17),(2,20),(3,21),(3,20),(1,18),(4,23),(4,20);
+
 CREATE table comment (
 id int PRIMARY KEY AUTO_INCREMENT,
 user_id int,

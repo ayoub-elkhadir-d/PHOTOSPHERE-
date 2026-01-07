@@ -11,16 +11,18 @@ class Album_Repo implements RepositoryInterface{
         $this->pdo = $db->getConnection();
     }
 
-public function fetch(int $id): ?Album
+public function getAlbumWithPhotos(int $id) 
 {
-    $stmt = $this->pdo->prepare("SELECT * FROM album WHERE id = :id");
+    $stmt = $this->pdo->prepare("SELECT album_id ,post.*
+FROM albumPost 
+INNER JOIN post ON albumPost.post_id = post.id where albumPost.album_id = :id");
     $stmt->execute(['id' => $id]);
-    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if (!$data) return null;
-
-    return new Album($data['id'],$data['title'],$data['description'],$data['visibility'],$data['photo_cover_url'],$data['photo_count'],$data['created_at'],$data['updated_at']
-    );
+     
+    return  $data;
+    
 }
 
 public function fetchAll(): array
@@ -46,8 +48,8 @@ public function fetchAll(): array
 }
 
 
-    public function insert(){}
-public function insert_public_album(Album $album): bool
+
+public function Creat_public_album(Album $album): bool
 {
     $sql = "INSERT INTO album 
         (title, visibility, photo_cover_url, photo_count, created_at, updated_at) 
@@ -65,7 +67,7 @@ public function insert_public_album(Album $album): bool
     ]);
 }
 
-public function insert_private_album(Album $album): bool
+public function Creat_private_album(Album $album): bool
 {
     $sql = "INSERT INTO album 
         (title, visibility, photo_cover_url, photo_count, created_at, updated_at) 
@@ -111,5 +113,23 @@ public function update(Album $album): bool
         $stmt = $this->pdo->prepare("DELETE FROM album WHERE id = :id");
         return $stmt->execute(['id' => $id]);
     }
+
+   public function  addPhotoToAlbum(int $photoId,int $albumId){
+        $sql = "INSERT INTO albumPost VALUES (:post_id,:album_id)"; 
+          $stmt = $this->pdo->prepare($sql);
+
+    return $stmt->execute([
+        'post_id'=> $photoId,
+        'album_id' => $albumId]);
+   }
+   public function  removePhotoFromAlbum(int $photoId,int $albumId){
+        $sql = "DELETE  from albumPost where post_id = :postId and  album_id = :albumId"; 
+          $stmt = $this->pdo->prepare($sql);
+
+    return $stmt->execute([
+        'postId'=> $photoId,
+        'albumId' => $albumId]);
+   }
+
 
 }

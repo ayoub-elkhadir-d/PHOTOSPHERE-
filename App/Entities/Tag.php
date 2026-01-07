@@ -9,12 +9,7 @@ class Tag
     private string $slug;
     private int $usageCount;
 
-    public function __construct(
-        int $id,
-        string $name,
-        string $slug,
-        int $usageCount
-    ) {
+    public function __construct(int $id,string $name,string $slug,int $usageCount) {
         $this->id = $id;
         $this->name = $name;
         $this->slug = $slug;

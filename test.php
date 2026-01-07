@@ -14,7 +14,7 @@ require_once __DIR__ . '/App/Repositories/Likes_repo.php';
 
  $comment_repo = new Comment_repo();
  $pst_repo = new Post_repo();
- $pst_repo = new Album_Repo();
+ $alb_repo = new Album_Repo();
  $user_repo = new User_Repo();
  $like_repo = new Likes_repo();
 
@@ -45,15 +45,14 @@ date('Y-m-d H:i:s')
 //     date('Y-m-d H:i:s')         
 // );
 
-
-$comment_repo -> addComment($newComment);
+//  $alb_repo ->  addPhotoToAlbum(4,19);
+ $t = $alb_repo ->  getAlbumWithPhotos(20);
+print_r($t);
+// $comment_repo -> addComment($newComment);
 // $like_repo->addLike($like);
 
 
-// class Article implements Taggable
-// {
-//     use TaggableTrait;
-// }
+
 
 
 
