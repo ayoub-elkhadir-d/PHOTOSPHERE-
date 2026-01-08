@@ -49,7 +49,7 @@ $album = new Album(
 );
 
 //  $alb_repo ->  addPhotoToAlbum(4,19);
-$alb_repo ->  Crea_album($album,8,0);
+$alb_repo ->  Creat_album($album,8,0);
 
 
 // $comment_repo -> addComment($newComment);

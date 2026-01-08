@@ -29,31 +29,11 @@ INNER JOIN album ON albumPost.album_id = album.id
 }
 
 
-public function fetchAll(): array
-{
-    $albums = [];
-
-    $stmt = $this->pdo->prepare("SELECT * FROM album");
-    $stmt->execute();
-
-    foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $data) {
-        $albums[] = new Album(
-            $data['id'],
-            $data['title'],
-            $data['description'],
-            $data['photo_cover_url'],
-            $data['photo_count'],
-            $data['created_at'],
-            $data['updated_at']
-        );
-    }
-
-    return $albums;
-}
 
 
 
-public function Crea_album(Album $album, $user_id, $isPrivate) {
+
+public function Creat_album(Album $album, $user_id, $isPrivate) {
     $visibility = 0;
     $sql = "INSERT INTO album (user_id, title, description, visibility, photo_cover_url, photo_count, created_at, updated_at) VALUES (:user_id, :title, :description, :visibility, :cover, :count, :created, :updated)";
     $get_role = "SELECT role from User WHERE id = :user_id";
